@@ -8,3 +8,5 @@
  */
 
 rootProject.name = 'oo-nightschool-ydx'
+include '01-rectangle'
+
