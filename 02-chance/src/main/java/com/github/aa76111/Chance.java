@@ -1,4 +1,4 @@
-package oo.nightschool.ydx;
+package com.github.aa76111;
 
 public class Chance {
     private double fraction;
