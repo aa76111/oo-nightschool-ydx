@@ -15,7 +15,7 @@ public class ChanceTest {
     }
 
     @Test
-    public void should_get_and_change() {
+    public void should_get_and_chance() {
         //  given
 
         //  when

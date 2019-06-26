@@ -17,10 +17,10 @@ public class Chance {
     }
 
     public Chance or(Chance aC) {
-        return new Chance((fraction + aC.fraction) - fraction * aC.fraction);
+        return new Chance((fraction + aC.fraction) - and(aC).fraction);
     }
 
     public Chance xor(Chance aC) {
-        return new Chance(fraction * (ONE - aC.fraction) + (ONE - fraction) * aC.fraction);
+        return new Chance(fraction * (aC.not().fraction) + (not().fraction) * aC.fraction);
     }
 }
