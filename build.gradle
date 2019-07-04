@@ -1,14 +1,118 @@
-
 plugins {
     id 'java-library'
     id 'idea'
+    id 'java'
+    id 'jacoco'
+    id 'com.github.kt3k.coveralls' version '2.7.1'
 }
 
 repositories {
     jcenter()
 }
 
-dependencies {
-    testImplementation 'junit:junit:4.12'
-    testCompile 'org.assertj:assertj-core:3.11.1'
+subprojects {
+    apply plugin: 'idea'
+    apply plugin: 'java'
+    apply plugin: 'jacoco'
+    version = '1.0'
+
+    // JVM 版本号要求
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    // java编译的时候缺省状态下会因为中文字符而失败
+    [compileJava,compileTestJava,javadoc]*.options*.encoding = 'UTF-8'
+
+    //定义版本号
+
+    repositories {
+        mavenCentral()
+    }
+
+    jar {
+        manifest {
+            attributes("Implementation-Title": "Gradle")
+        }
+    }
+
+    configurations {
+        // 所有需要忽略的包定义在此
+
+    }
+
+    dependencies {
+        //  通用依赖
+//        compile {
+//
+//        }
+
+        testCompile(
+                'org.assertj:assertj-core:3.11.1',
+                'junit:junit:4.12'
+        )
+
+    }
+
+
+    test {
+        finalizedBy jacocoTestReport
+        finalizedBy jacocoTestCoverageVerification
+    }
+
+    jacocoTestReport {
+        reports {
+            xml.enabled true
+            html.enabled true
+            csv.enabled false
+        }
+    }
+
+    jacocoTestCoverageVerification {
+        violationRules {
+            rule {
+                limit {
+                    minimum = 1.0
+                }
+            }
+            rule {
+                enabled = true
+                element = 'PACKAGE'
+                includes = ['com.*']
+
+                limit {
+                    counter = 'LINE'
+                    value = 'COVEREDRATIO'
+                    minimum = 1.0
+                }
+                limit {
+                    counter = 'BRANCH'
+                    value = 'COVEREDRATIO'
+                    minimum = 1.0
+                }
+                limit {
+                    counter = 'METHOD'
+                    value = 'COVEREDRATIO'
+                    minimum = 1.0
+                }
+                limit {
+                    counter = 'CLASS'
+                    value = 'COVEREDRATIO'
+                    minimum = 1.0
+                }
+            }
+        }
+        dependsOn(jacocoTestReport)
+    }
+
+    check.dependsOn jacocoTestCoverageVerification
+
+    coveralls {
+        jacocoReportPath 'build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml'
+    }
+
+
+    // 显示当前项目下所有用于 compile 的 jar.
+//    task listJars(description: 'Display all compile jars.') << {
+//        configurations.compile.each { File file -> println file.name }
+//    }
 }
