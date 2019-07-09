@@ -71,7 +71,7 @@ subprojects {
         violationRules {
             rule {
                 limit {
-                    minimum = 1.0
+                    minimum = 0.8
                 }
             }
             rule {
@@ -82,22 +82,22 @@ subprojects {
                 limit {
                     counter = 'LINE'
                     value = 'COVEREDRATIO'
-                    minimum = 1.0
+                    minimum = 0.8
                 }
                 limit {
                     counter = 'BRANCH'
                     value = 'COVEREDRATIO'
-                    minimum = 1.0
+                    minimum = 0.4
                 }
                 limit {
                     counter = 'METHOD'
                     value = 'COVEREDRATIO'
-                    minimum = 1.0
+                    minimum = 0.8
                 }
                 limit {
                     counter = 'CLASS'
                     value = 'COVEREDRATIO'
-                    minimum = 1.0
+                    minimum = 0.8
                 }
             }
         }
