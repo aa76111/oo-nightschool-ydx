@@ -17,7 +17,7 @@ public class LocaleUtilsTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         localeUtils = new LocaleUtils();
         EMPTY = "";
     }
