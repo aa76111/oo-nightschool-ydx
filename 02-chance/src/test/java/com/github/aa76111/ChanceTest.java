@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ChanceTest {
     private Chance chanceA;
     private Chance chanceB;
+
     @Before
     public void setUp() throws Exception {
         chanceA = new Chance(0.46D);

@@ -15,7 +15,7 @@ public class StringUtilsTest {
     StringUtils stringUtils = null;
     String value = null;
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         sequenceNull = null;
         sequenceBlank = "  ";
         sequenceZeroLength = "";

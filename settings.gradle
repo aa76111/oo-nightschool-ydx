@@ -11,4 +11,5 @@ rootProject.name = 'oo-nightschool-ydx'
 include '01-rectangle'
 include '02-chance'
 include '03-xunit'
+include '04-mock'
 

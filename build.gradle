@@ -43,16 +43,19 @@ subprojects {
     dependencies {
         //  通用依赖
 //        compile {
-//
 //        }
 
         testCompile(
                 'org.assertj:assertj-core:3.11.1',
-                'junit:junit:4.12'
+                'junit:junit:4.12',
+                'org.mockito:mockito-core:2.+',
+                'org.powermock:powermock-module-junit4:2.0.2',
+                'org.powermock:powermock-api-mockito2:2.0.2'
         )
 
     }
 
+    //  jacoco
 
     test {
         finalizedBy jacocoTestReport
@@ -65,20 +68,35 @@ subprojects {
             html.enabled true
             csv.enabled false
         }
+        afterEvaluate {
+            classDirectories = files(classDirectories.files.collect {
+                fileTree(
+                        dir: it,
+                        exclude: [
+                                '**/domain/*.class',
+                                '**/utils/*.class'
+                        ]
+                )
+            })
+        }
     }
 
     jacocoTestCoverageVerification {
         violationRules {
-            rule {
-                limit {
-                    minimum = 0.8
-                }
-            }
+//            rule {
+//                limit {
+//                    minimum = 0.8
+//                }
+//            }
             rule {
                 enabled = true
                 element = 'PACKAGE'
                 includes = ['com.*']
-
+                excludes = [
+                        '**.refactors.*',
+                        '**.domain.*',
+                        '**.utils.*'
+                ]
                 limit {
                     counter = 'LINE'
                     value = 'COVEREDRATIO'
@@ -87,7 +105,7 @@ subprojects {
                 limit {
                     counter = 'BRANCH'
                     value = 'COVEREDRATIO'
-                    minimum = 0.4
+                    minimum = 0.8
                 }
                 limit {
                     counter = 'METHOD'
