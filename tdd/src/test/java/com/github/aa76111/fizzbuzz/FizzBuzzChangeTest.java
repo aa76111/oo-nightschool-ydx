@@ -25,6 +25,7 @@ public class FizzBuzzChangeTest {
             add(new Pair<>(35, "FizzBuzz"));
             add(new Pair<>(53, "FizzBuzz"));
             add(new Pair<>(100, "Buzz"));
+            add(new Pair<>(155, "Buzz"));
         }};
     }
 
