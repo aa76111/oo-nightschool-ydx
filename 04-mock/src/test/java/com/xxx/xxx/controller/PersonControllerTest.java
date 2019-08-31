@@ -32,7 +32,6 @@ public class PersonControllerTest {
 
         //  when
         String fullName = personController.getName(name);
-
         //  then
         assertThat(fullName).isEqualTo("y,dx");
     }

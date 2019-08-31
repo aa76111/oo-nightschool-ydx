@@ -23,7 +23,7 @@ public class PersonServiceTest {
     private PersonService personService;
 
     @Test
-    public void should_return_person_successfully() throws InterruptedException {
+    public void should_return_person_successfully() {
         //  given
         PowerMockito.mockStatic(TimeUnit.class);
         PowerMockito.doNothing().when(TimeUnit.class);
