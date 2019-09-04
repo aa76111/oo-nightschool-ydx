@@ -1,5 +1,6 @@
 package com.github.aa76111.args.example;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,5 +29,16 @@ public class ArgsTest {
 //        assertThat(port).isEqualTo(8080);
 //        assertThat(directory).isEqualTo("*");
         assertThat(123).isEqualTo(123);
+    }
+
+    @Test
+    public void should_parse_schema_correct_successfully() {
+        //  given
+        //  when
+
+        //  then
+        assertThat(arg.getBoolean('l')).isEqualTo(true);
+        assertThat(arg.getInt('p')).isEqualTo(0);
+        assertThat(arg.getString('d')).isEqualTo(StringUtils.EMPTY);
     }
 }

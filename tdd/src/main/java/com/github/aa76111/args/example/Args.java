@@ -64,7 +64,15 @@ public class Args {
 //        return argsFound.contains(arg);
 //    }
 //
-//    public boolean getBoolean(char arg) {
-//        return BooleanArgumentMarshaler.getValue(marshalers.get(arg));
-//    }
+    public boolean getBoolean(char arg) {
+        return BooleanArgumentMarshaler.getValue(marshalers.get(arg));
+    }
+
+    public String getString(char arg) {
+        return StringArgumentMarshaler.getValue(marshalers.get(arg));
+    }
+
+    public int getInt(char arg) {
+        return IntegerArgumentMarshaler.getValue(marshalers.get(arg));
+    }
 }

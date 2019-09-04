@@ -1,12 +1,13 @@
 package com.github.aa76111.args.example;
 
+import java.util.Iterator;
 import java.util.Objects;
 
 public class BooleanArgumentMarshaler implements ArgumentMarshaler {
     private boolean booleanValue = false;
 
     @Override
-    public void set(Iterable<String> currentArgument) {
+    public void set(Iterator<String> currentArgument) {
         booleanValue = true;
     }
 
