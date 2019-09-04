@@ -3,6 +3,7 @@ package com.github.aa76111.args.enumeration;
 import com.github.aa76111.args.marshaler.ArgumentMarshaler;
 import com.github.aa76111.args.marshaler.BooleanArgumentMarshaler;
 import com.github.aa76111.args.marshaler.IntegerArgumentMarshaler;
+import com.github.aa76111.args.marshaler.StringArgumentMarshaler;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
@@ -10,7 +11,8 @@ import java.util.Objects;
 
 public enum SchemaTail {
     BOOLEAN(StringUtils.EMPTY, BooleanArgumentMarshaler.class),
-    INTEGER("#", IntegerArgumentMarshaler.class);
+    INTEGER("#", IntegerArgumentMarshaler.class),
+    STRING("*", StringArgumentMarshaler.class);
 
     private Object tail;
     private Class<? extends ArgumentMarshaler> clazz;
@@ -29,7 +31,6 @@ public enum SchemaTail {
                     try {
                         argumentMarshaler = schemaTail.clazz.newInstance();
                     } catch (InstantiationException | IllegalAccessException e) {
-//                        log.error("转换类型错误");
                         e.printStackTrace();
                     }
                     return argumentMarshaler;

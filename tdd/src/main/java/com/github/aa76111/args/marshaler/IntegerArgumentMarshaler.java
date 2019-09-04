@@ -16,6 +16,5 @@ public class IntegerArgumentMarshaler implements ArgumentMarshaler {
             return ((IntegerArgumentMarshaler) am).intValue;
         }
         return 0;
-
     }
 }

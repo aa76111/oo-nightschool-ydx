@@ -22,13 +22,16 @@ public class Schema {
     private void parseSchemaElement(String element) throws ArgsException {
         char elementId = element.charAt(0);
         validateSchemaElementId(elementId);
-        ArgumentMarshaler argumentMarshaler = SchemaTail.getArgumentMarshaler(element.substring(1));
-        marshalers.put(elementId, argumentMarshaler);
+        marshalers.put(elementId, SchemaTail.getArgumentMarshaler(element.substring(1)));
     }
 
     private void validateSchemaElementId(char elementId) throws ArgsException {
         if (!Character.isLetter(elementId)) {
             throw new ArgsException("参数必须是字母");
         }
+    }
+
+    public Map<Character, ArgumentMarshaler> getMarshalers() {
+        return marshalers;
     }
 }
