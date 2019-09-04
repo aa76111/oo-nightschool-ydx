@@ -1,5 +1,7 @@
 package com.github.aa76111.args.example;
 
+import org.apache.commons.lang3.StringUtils;
+
 import static com.github.aa76111.args.example.ErrorCode.OK;
 
 public class ArgsException extends Exception {
@@ -52,5 +54,16 @@ public class ArgsException extends Exception {
 
     public void setErrorCode(ErrorCode errorCode) {
         this.errorCode = errorCode;
+    }
+
+    public String errorMessage() {
+        switch (errorCode) {
+            case OK:
+                return "TILT: should not get here.";
+            case INVALID_ARGUMENT_FORMAT:
+                return String.format("'%s' is not valid argument format.", errorParameter);
+            default:
+                return StringUtils.EMPTY;
+        }
     }
 }
