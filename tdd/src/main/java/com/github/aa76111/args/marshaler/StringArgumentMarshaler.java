@@ -1,4 +1,4 @@
-package com.github.aa76111.args.example;
+package com.github.aa76111.args.marshaler;
 
 import org.apache.commons.lang3.StringUtils;
 

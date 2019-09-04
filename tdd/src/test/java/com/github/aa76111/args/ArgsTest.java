@@ -20,7 +20,7 @@ public class ArgsTest {
 //        assertThat(dir).isEqualTo("user/local");
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = ArgsException.class)
     public void should_throw_when_schem_is_not_letter() {
         //  given
         //  when

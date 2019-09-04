@@ -41,12 +41,13 @@ subprojects {
     }
 
     dependencies {
-        //  通用依赖
-//        compile {
-//        }
 
         implementation(
-                'org.apache.commons:commons-lang3:3.8.1'
+                'org.apache.commons:commons-lang3:3.8.1',
+                "org.projectlombok:lombok:1.18.4"
+        )
+        annotationProcessor(
+                "org.projectlombok:lombok:1.18.4"
         )
         testCompile(
                 'org.assertj:assertj-core:3.11.1',
@@ -64,6 +65,7 @@ subprojects {
         finalizedBy jacocoTestReport
         finalizedBy jacocoTestCoverageVerification
     }
+
 
     jacocoTestReport {
         reports {

@@ -1,4 +1,6 @@
-package com.github.aa76111.args.example;
+package com.github.aa76111.args.marshaler;
+
+import com.github.aa76111.args.ArgsException;
 
 import java.util.Iterator;
 
