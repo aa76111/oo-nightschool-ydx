@@ -9,7 +9,7 @@ import static com.github.aa76111.args.example.ErrorCode.INVALID_ARGUMENT_FORMAT;
 
 public class Args {
 
-    private HashMap<String, ArgumentMarshaler> marshalers;
+    private HashMap<Character, ArgumentMarshaler> marshalers;
     private HashSet<Character> argsFound;
 
     public Args(String schema, String[] args) {
@@ -17,7 +17,6 @@ public class Args {
         argsFound = new HashSet<>();
         parseSchema(schema);
         parseArgs(Arrays.asList(args));
-        
     }
 
     private void parseSchema(String schema) {
@@ -36,6 +35,19 @@ public class Args {
         char elementId = element.charAt(0);
         String elementTail = element.substring(1);
         validateSchemaElementId(elementId);
+        switch (elementTail) {
+            case "":
+                marshalers.put(elementId, new BooleanArgumentMarshaler());
+                break;
+            case "*":
+                marshalers.put(elementId, new StringArgumentMarshaler());
+                break;
+            case "#":
+                marshalers.put(elementId, new IntegerArgumentMarshaler());
+                break;
+            default:
+                throw new ArgsException(INVALID_ARGUMENT_FORMAT, elementId, elementTail);
+        }
     }
 
     private void validateSchemaElementId(char elementId) throws ArgsException {
@@ -47,4 +59,12 @@ public class Args {
     private void parseArgs(List<String> args) {
 
     }
+//
+//    public boolean has(char arg) {
+//        return argsFound.contains(arg);
+//    }
+//
+//    public boolean getBoolean(char arg) {
+//        return BooleanArgumentMarshaler.getValue(marshalers.get(arg));
+//    }
 }
