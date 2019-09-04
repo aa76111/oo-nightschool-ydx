@@ -12,7 +12,7 @@ public class IntegerArgumentMarshaler implements ArgumentMarshaler {
     }
 
     public static int getValue(ArgumentMarshaler am) {
-        if (Objects.nonNull(am) && am instanceof BooleanArgumentMarshaler) {
+        if (Objects.nonNull(am) && am instanceof IntegerArgumentMarshaler) {
             return ((IntegerArgumentMarshaler) am).intValue;
         }
         return 0;

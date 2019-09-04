@@ -14,7 +14,7 @@ public class StringArgumentMarshaler implements ArgumentMarshaler {
     }
 
     public static String getValue(ArgumentMarshaler am) {
-        if (Objects.nonNull(am) && am instanceof BooleanArgumentMarshaler) {
+        if (Objects.nonNull(am) && am instanceof StringArgumentMarshaler) {
             return ((StringArgumentMarshaler) am).strVal;
         }
         return StringUtils.EMPTY;

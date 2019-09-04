@@ -12,8 +12,9 @@ public class ArgsTest {
 
 
     @Before
-    public void setUp() {
-        String[] args = new String [] {""};
+    public void setUp() throws ArgsException {
+//        String[] args = new String [] {"-l","-p","8080","-d","/usr/local"};
+        String[] args = new String [] {"-lp","8080","-d","/usr/local"};
         arg = new Args("l,p#,d*", args);
     }
 
@@ -21,14 +22,14 @@ public class ArgsTest {
     public void should_analysis_args_successfully() {
         //  given
         //  when
-//        Boolean logging = arg.getBoolean("l");
-//        int port = arg.getInt("p");
-//        String directory = arg.getString("d");
+        Boolean logging = arg.getBoolean('l');
+        int port = arg.getInt('p');
+        String directory = arg.getString('d');
 //          then
-//        assertThat(logging).isTrue();
-//        assertThat(port).isEqualTo(8080);
-//        assertThat(directory).isEqualTo("*");
-        assertThat(123).isEqualTo(123);
+        assertThat(logging).isTrue();
+        assertThat(port).isEqualTo(8080);
+        assertThat(directory).isEqualTo("/usr/local");
+//        assertThat(123).isEqualTo(123);
     }
 
     @Test
