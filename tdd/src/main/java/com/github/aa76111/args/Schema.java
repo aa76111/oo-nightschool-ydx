@@ -20,15 +20,16 @@ public class Schema {
     }
 
     private void parseSchemaElement(String element) throws ArgsException {
-        char elementId = element.charAt(0);
-        validateSchemaElementId(elementId);
+        char elementId = getSchemaElementId(element);
         marshalers.put(elementId, SchemaTail.getArgumentMarshaler(element.substring(1)));
     }
 
-    private void validateSchemaElementId(char elementId) throws ArgsException {
+    private char getSchemaElementId(String element) throws ArgsException {
+        char elementId = element.charAt(0);
         if (!Character.isLetter(elementId)) {
             throw new ArgsException("参数必须是字母");
         }
+        return elementId;
     }
 
     public Map<Character, ArgumentMarshaler> getMarshalers() {

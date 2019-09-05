@@ -17,6 +17,14 @@ public class SchemaTest {
         //  then
     }
 
+    @Test(expected = ArgsException.class)
+    public void should_throw_when_parse_schema() {
+        //  given
+        //  when
+        new Schema("l,p#,d*,tx");
+        //  then
+    }
+
     @Test
     public void should_parse_schema_correct_when_input_correct() {
         //  given

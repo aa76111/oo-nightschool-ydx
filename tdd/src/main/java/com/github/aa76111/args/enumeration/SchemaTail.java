@@ -1,5 +1,6 @@
 package com.github.aa76111.args.enumeration;
 
+import com.github.aa76111.args.ArgsException;
 import com.github.aa76111.args.marshaler.ArgumentMarshaler;
 import com.github.aa76111.args.marshaler.BooleanArgumentMarshaler;
 import com.github.aa76111.args.marshaler.IntegerArgumentMarshaler;
@@ -35,6 +36,6 @@ public enum SchemaTail {
                     }
                     return argumentMarshaler;
                 })
-                .orElse(null);
+                .orElseThrow(() -> new ArgsException("unexpected schema"));
     }
 }
