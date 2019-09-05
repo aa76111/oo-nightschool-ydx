@@ -9,9 +9,9 @@ public class ArgsTest {
     @Test
     public void should_analysis_args_correct_successfully() {
         //  given
-//        Args arg = new Args("l,p#,d*", new String[]{"-l","-p","8080","-d","user/local"});
+        Args arg = new Args("l,p#,d*", new String[]{"-l=","-p=8080","-d=user/local"});
 //        //  when
-//        Boolean logging = arg.getBoolean("l");
+//        Boolean logging = arg.getBoolean('x');
 //        Integer port = arg.getInterget("p");
 //        String dir = arg.getString("l");
 //        //  then
@@ -24,7 +24,7 @@ public class ArgsTest {
     public void should_throw_when_schem_is_not_letter() {
         //  given
         //  when
-        Args arg = new Args("2,p#,d*", new String[]{"-l","-p","8080","-d","user/local"});
+//        Args arg = new Args("2,p#,d*", new String[]{"-l","-p","8080","-d","user/local"});
         //  then
     }
 }

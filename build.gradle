@@ -26,6 +26,7 @@ subprojects {
     //定义版本号
 
     repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         mavenCentral()
     }
 
@@ -44,7 +45,8 @@ subprojects {
 
         implementation(
                 'org.apache.commons:commons-lang3:3.8.1',
-                "org.projectlombok:lombok:1.18.4"
+                "org.projectlombok:lombok:1.18.4",
+                'io.reactivex.rxjava2:rxjava:2.2.12'
         )
         annotationProcessor(
                 "org.projectlombok:lombok:1.18.4"

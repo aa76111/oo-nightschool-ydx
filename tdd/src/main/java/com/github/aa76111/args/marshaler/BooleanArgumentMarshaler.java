@@ -7,7 +7,7 @@ public class BooleanArgumentMarshaler implements ArgumentMarshaler {
     private boolean booleanValue = false;
 
     @Override
-    public void set(Iterator<String> currentArgument) {
+    public void set(String argVal) {
         booleanValue = true;
     }
 

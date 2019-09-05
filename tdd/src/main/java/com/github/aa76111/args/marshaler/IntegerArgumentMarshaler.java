@@ -1,14 +1,12 @@
 package com.github.aa76111.args.marshaler;
 
-import java.util.Iterator;
 import java.util.Objects;
 
 public class IntegerArgumentMarshaler implements ArgumentMarshaler {
     private int intValue = 0;
     @Override
-    public void set(Iterator<String> currentArgument) {
-        String param = currentArgument.next();
-        intValue = Integer.parseInt(param);
+    public void set(String argVal) {
+        intValue = Integer.parseInt(argVal);
     }
 
     public static int getValue(ArgumentMarshaler am) {
